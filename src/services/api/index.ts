@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getFromLocalStorage } from '../../hooks/useLocalStorage'
 import { apiHelpers, appRoutes, localStorageVar } from '../../utils/constants'
 import routes from './routes'
 const httpInstance = axios.create({ baseURL: routes.BASE_URL })
@@ -10,7 +11,7 @@ httpInstance.interceptors.request.use(
       apiHelpers.CONTENT_TYPE_APP_JSON
     config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${
       apiHelpers.TOKEN_TYPE
-    } ${localStorage.getItem(localStorageVar.TOKEN_VAR) || null}`
+    } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
     return config
   },
   (error) => {

@@ -16,6 +16,7 @@
     "done": "Fertig",
     "resetPassword": "Passwort zurücksetzen",
     "resetPasswordSubTitle":"Ihr neues Passwort muss sich vom vorherigen Passwort unterscheiden",
+    "getLink":"LINK ERHALTEN",
     "pageNotFound":"Seite nicht gefunden."
   }
 }

@@ -17,6 +17,8 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import { toast } from 'react-toastify'
+import { getFromLocalStorage, setInLocalStorage } from '../../hooks/useLocalStorage'
+import { localStorageVar } from '../../utils/constants'
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -87,15 +89,10 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
           </Link>
           <ul className="navbar-items">
             <li className="item">
-              {localStorage.token ? (
+              { (getFromLocalStorage(localStorageVar.TOKEN_VAR)!== null) ? (
                 <Link to="" onClick={logoutHandler}>
                   {t<string>('logoutBtn')}
                 </Link>
-              ) : (
-                <Link to=""></Link>
-              )}
-              {localStorage.token ? (
-                <Link to=""></Link>
               ) : (
                 <Link to="/login">{t<string>('loginBtn')}</Link>
               )}
@@ -117,16 +114,11 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                   label="Language"
                   onChange={(e) => {
                     i18n.changeLanguage(e.target.value)
-                    localStorage.setItem('lng', e.target.value)
+                    setInLocalStorage('lng', e.target.value)
                   }}
                 >
                   {availableLanguages.map((language) => (
                     <MenuItem key={language} value={language}>
-                      <img
-                        className="countryFlag"
-                        src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/125px-Flag_of_India.svg.png"
-                        alt=""
-                      />
                       {language}
                     </MenuItem>
                   ))}

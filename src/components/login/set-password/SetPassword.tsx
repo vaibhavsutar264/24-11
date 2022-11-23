@@ -102,7 +102,7 @@ const SetPassword = () => {
       await dispatch(updatePassword(data))
     } catch (error) {
       console.error(error);
-      reset();
+      // reset();
     }
     
   };
@@ -177,26 +177,28 @@ const SetPassword = () => {
     } else {
       passwordBoxElement.className = 'input-wrapper'
     }
+    const tooltipFullfilledRightClickGreen = 'tooltipList-item fulfilled'
+    const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
     if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
-      tooltipUppercaseElement.className = 'tooltipList-item fulfilled'
+      tooltipUppercaseElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipUppercaseElement.className = 'tooltipList-item'
+      tooltipUppercaseElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(lowercaseVariable)) {
-      tooltipLowercaseElement.className = 'tooltipList-item fulfilled'
+      tooltipLowercaseElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipLowercaseElement.className = 'tooltipList-item'
+      tooltipLowercaseElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(symbolVariable)) {
-      tooltipSymbolElement.className = 'tooltipList-item fulfilled'
+      tooltipSymbolElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipSymbolElement.className = 'tooltipList-item'
+      tooltipSymbolElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
-      tooltipAtleastElement.className = 'tooltipList-item fulfilled'
+      tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
       linearProgressModerateElement.style.display="block"
     } else {
-      tooltipAtleastElement.className = 'tooltipList-item'
+      tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
       linearProgressModerateElement.style.display="none"
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
@@ -206,7 +208,6 @@ const SetPassword = () => {
       linearProgressModerateElement.style.display="block"
       linearProgressSuccessElement.style.display="none"
     }
-
   }
 
   const handleConfirmPasswordChange = (e: SyntheticEvent) => {
@@ -404,20 +405,6 @@ const SetPassword = () => {
                   />
                   </FormControl>
                   <p className="text-error">{errors.confirmPassword ?.message}</p>
-                <FormControl
-                  className="input-wrapper password-checkHide"
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    position: 'relative',
-                    width: 1,
-                    margin: '20px 0px',
-                  }}
-                >
-                  <a href="/forgot-password" className="forgot-password">
-                    {t<string>('forgotPassword')}
-                  </a>
-                </FormControl>
                 <FormControl
                   className="input-wrapper submitBtn"
                   sx={{

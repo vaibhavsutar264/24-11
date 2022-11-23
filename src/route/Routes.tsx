@@ -1,13 +1,7 @@
 import { appRoutes } from '../utils/constants'
 import { Suspense, lazy } from 'react'
-// import HomeScreen from '../components/home/HomeScreen'
 import Loading from '../components/loader/Loading'
-// import Login from '../components/login/login-screen/Login'
-// import SetPassword from '../components/login/set-password/SetPassword'
-// import Notfound from '../components/notfound/Notfound'
 import PrivateRoutes from '../utils/PrivateRoutes'
-// import ForgotPassword from '../components/login/forgot-password/ForgotPassword'
-// import ResetPassword from '../components/login/reset-password/ResetPassword'
 import { useRoutes } from 'react-router-dom'
 
 // eslint-disable-next-line react/display-name
@@ -38,22 +32,22 @@ function Routes() {
           element: <ResetPassword />,
         },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
+        // {
+        //   path: appRoutes.SET_PASSWORD,
+        //   element: <SetPassword />,
+        // },
+      ],
+    },
+    {
+      path: '',
+      element: <PrivateRoutes />,
+      children: [
         {
           path: appRoutes.SET_PASSWORD,
           element: <SetPassword />,
         },
       ],
     },
-    // {
-    //   path: '',
-    //   element: <PrivateRoutes />,
-    //   children: [
-    //     {
-    //       path: appRoutes.SET_PASSWORD,
-    //       element: <SetPassword />,
-    //     },
-    //   ],
-    // },
     {
       path: appRoutes.NOT_FOUND,
       element: <Notfound />,

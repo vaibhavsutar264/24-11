@@ -24,6 +24,8 @@ export const localStorageVar = {
   THEME_VAR: 'theme',
   TOKEN_VAR: 'token',
   USER_VAR: 'user',
+  I18_LANG_VAR: 'i18nextLng',
+  LANG_VAR: 'lng',
 }
 
 export const thunkPaths = {
@@ -34,6 +36,12 @@ export const thunkPaths = {
 
 export const slices = {
   AUTH_SLICE: 'auth',
+}
+
+
+export const typeVar = {
+  IMAGE_WEBP: "image/webp",
+  
 }
 
 export const appRoutes = {

@@ -16,6 +16,7 @@
     "done": "Done",
     "resetPassword": "Reset Password",
     "resetPasswordSubTitle":"Your new password must be different from previous password",
+    "getLink":"GET LINK",
     "pageNotFound":"Page Not Found."
   }
 }

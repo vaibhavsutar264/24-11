@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
+import { getFromLocalStorage, setInLocalStorage } from '../hooks/useLocalStorage'
 import { appThemes, localStorageVar } from '../utils/constants'
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState(appThemes.LIGHT_THEME)
 
   const setMode = (mode: any) => {
-    window.localStorage.setItem(localStorageVar.THEME_VAR, mode)
+    setInLocalStorage(localStorageVar.THEME_VAR, mode)
     setTheme(mode)
   }
 
@@ -16,7 +17,7 @@ export const useDarkMode = () => {
   }
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem(localStorageVar.THEME_VAR)
+    const localTheme = getFromLocalStorage(localStorageVar.THEME_VAR)
     localTheme ? setTheme(localTheme) : setMode(appThemes.LIGHT_THEME)
   }, [])
 

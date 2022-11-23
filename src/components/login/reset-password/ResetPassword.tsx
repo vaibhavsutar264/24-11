@@ -208,15 +208,15 @@ const ResetPassword = () => {
       linearProgressModerateElement.style.display="block"
     } else {
       tooltipAtleastElement.className = 'tooltipList-item'
-      linearProgressModerateElement.style.display="none !important"
+      linearProgressModerateElement.style.display="none"
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
       linearProgressModerateElement.style.display="none"
       linearProgressSuccessElement.style.display="block"
     } else {
+      linearProgressModerateElement.style.display="block"
       linearProgressSuccessElement.style.display="none"
     }
-
   }
 
 
@@ -347,12 +347,12 @@ const ResetPassword = () => {
                          <span style={{ color: '#ed6c02' }}>Moderate</span>
                        </p>
                        <LinearProgress
-                         id="linear-progress-moderate"
-                         variant="determinate"
-                         color="warning"
-                         value={90}
-                       />
-                       <LinearProgress
+                       id="linear-progress-moderate"
+                       variant="determinate"
+                       color="warning"
+                       value={50}
+                     />
+                     <LinearProgress
                        id="linear-progress-success"
                        variant="determinate"
                        color="success"
@@ -412,20 +412,6 @@ const ResetPassword = () => {
                     }}
                   />
                   <p className="text-error">{errors.confirmPassword ?.message}</p>
-                </FormControl>
-                <FormControl
-                  className="input-wrapper password-checkHide"
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    position: 'relative',
-                    width: 1,
-                    margin: '20px 0px',
-                  }}
-                >
-                  <a href="/forgot-password" className="forgot-password">
-                    {t<string>('forgotPassword')}
-                  </a>
                 </FormControl>
                 <FormControl
                   className="input-wrapper submitBtn"

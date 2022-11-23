@@ -1,7 +1,8 @@
+import { getFromLocalStorage } from '../hooks/useLocalStorage'
 import { localStorageVar } from './constants'
 
 export const getUserFromStorage = () => {
-  const userData = localStorage.getItem(localStorageVar.USER_VAR)
+  const userData = getFromLocalStorage(localStorageVar.USER_VAR)
   if (userData) {
     return JSON.parse(userData)
   }

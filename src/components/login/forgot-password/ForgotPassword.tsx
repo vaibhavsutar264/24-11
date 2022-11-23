@@ -28,6 +28,9 @@ import VoiceImg from '../../../assets/images/svg/Voice.svg'
 import ChatImg from '../../../assets/images/svg/Chat.svg'
 import VideoImg from '../../../assets/images/svg/Video.svg'
 import WhatsappImg from '../../../assets/images/svg/Whatsapp.svg'
+import BannerBg from '../../common/elements/banner'
+import BackgroundBox from '../../common/elements/backGroundBox'
+import useLocales from '../../../hooks/useLocales'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -43,7 +46,9 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 }))
 
 const ForgotPassword = () => {
+  const [open, setOpen] = useState(true)
   const dispatch = useAppDispatch()
+  const { t } = useLocales()
   const { isError, isSuccess, message } = useAppSelector(
     (state: any) => state.auth
   )
@@ -66,51 +71,38 @@ const ForgotPassword = () => {
     if (isSuccess) {
       toast.success(message)
     }
-  }, [isError,isSuccess, message])
+  }, [isError, isSuccess, message])
+
+  const handleEmailChange = (e: SyntheticEvent) => {
+    e.preventDefault()
+    const submitButtonElement = document.getElementById(
+      'btn-enable-style'
+    ) as HTMLButtonElement
+    setEmail((e.target as HTMLInputElement).value)
+    const emailVariable = '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'
+    const emailBoxElement = document.getElementById(
+      'email-box'
+    ) as HTMLInputElement
+    if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+      submitButtonElement.className = 'customBtn-01 btn-enable-style'
+    } else {
+      submitButtonElement.className = 'customBtn-01'
+    }
+  }
+
   return (
     <Box className="account__screen">
       {/* ACCOUNT SCREEN BANNER START*/}
-      <picture>
-        {' '}
-        <source srcSet={Background} type="image/webp" />{' '}
-        <source srcSet={Background} type="image/png" />{' '}
-        <img src={Background} className="account__screen__banner" alt="" />{' '}
-      </picture>
+      <BannerBg />
       {/* ACCOUNT SCREEN BANNER END */}
       {/* ACCOUNT SCREEN ANIMATION START */}
-      <Box sx={{ flexGrow: 1 }} className="account__form__animation">
-        <div className="floating-wrapper">
-          <div className="floating-wrapper-inner">
-            <div className="floating-item floating-item-1">
-              <img src={ChartImg} alt="Chart" />
-            </div>
-            <div className="floating-item floating-item-2">
-              <img src={PieChartImg} alt="Pie Chart" />
-            </div>
-            <div className="floating-item floating-item-3">
-              <img src={SalesImg} alt="Sales" />
-            </div>
-            <div className="floating-item floating-item-4">
-              <img src={VoiceImg} alt="Voice" />
-            </div>
-            <div className="floating-item floating-item-5">
-              <img src={ChatImg} alt="Chat" />
-            </div>
-            <div className="floating-item floating-item-6">
-              <img src={VideoImg} alt="Video" />
-            </div>
-            <div className="floating-item floating-item-7">
-              <img src={WhatsappImg} alt="Whatsapp" />
-            </div>
-          </div>
-        </div>
-      </Box>
+      <BackgroundBox />
       {/* ACCOUNT SCREEN ANIMATION END */}
       {/* ACCOUNT FORM START */}
       <Box sx={{ flexGrow: 1 }} id="login-form" className="account__form">
         <div className="form__inner">
           <Box sx={{ width: 1 }} className="account__form__header">
-            <h3 className="title">Forgot Password?</h3>
+            <h3 className="title">{t<string>('forgotPassword')}</h3>
           </Box>
           <Box
             sx={{ flexGrow: 1, paddingTop: '0 !important' }}
@@ -119,7 +111,8 @@ const ForgotPassword = () => {
             <form onSubmit={forgotPasswordSubmit} action="#" method="post">
               <FormGroup>
                 <FormControl
-                  className="input-wrapper success"
+                  className="input-wrapper"
+                  id="email-box"
                   sx={{
                     display: 'flex',
                     alignItems: 'flex-end',
@@ -134,11 +127,12 @@ const ForgotPassword = () => {
                   <TextField
                     required
                     id="username"
-                    label="Enter your email ID"
+                    label={t<string>('email')}
                     variant="standard"
                     sx={{ width: 1 }}
                     type="email"
                     name="email"
+                    onInput={handleEmailChange}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -155,10 +149,13 @@ const ForgotPassword = () => {
                 >
                   <ColorButton
                     type="submit"
+                    id="btn-enable-style"
+                    data-testid="button-element"
+                    disabled={open}
                     variant="contained"
                     className="customBtn-01"
                   >
-                    GET LINK
+                    {t<string>('getLink')}
                   </ColorButton>
                 </FormControl>
               </FormGroup>

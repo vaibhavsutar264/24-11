@@ -1,8 +1,3 @@
-// import { types } from "mobx-state-tree"
-
-// export const Password = types.model({
-//   password: types.optional(types.string, ""),
-// })
 
 export type AuthState = {
   user: null | AuthUser
