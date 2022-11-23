@@ -1,0 +1,17 @@
+.notFound-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper-inner {
+    text-align: center;
+    .notfound-svg {
+      width: 300px;
+      margin: 0 auto;
+    }
+    .inner-content {
+      margin-top: 50px;
+    }
+  }
+}

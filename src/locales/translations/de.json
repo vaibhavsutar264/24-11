@@ -1,0 +1,21 @@
+{
+  "common": {
+    "home": "Heimat Screen",
+    "cpaasHeading": "CPAAS TCL in german",
+    "loginHeading": "Anmeldung",
+    "enterEmailAndPassword": "Geben Sie die E-Mail-ID und das Passwort ein",
+    "email": "Email eingeben",
+    "password": "Passwort eingeben",
+    "forgotPassword": "Passwort vergessen ?",
+    "loginBtn": "Anmeldung",
+    "logoutBtn": "Ausloggen",
+    "yourEmailIdPasswordNotMatch": "Eingegebene Anmeldedaten sind nicht korrekt",
+    "setPassword": "Passwort festlegen",
+    "generatePassword": "Neues Passwort generieren",
+    "confirmPassword": "Passwort bestätigen",
+    "done": "Fertig",
+    "resetPassword": "Passwort zurücksetzen",
+    "resetPasswordSubTitle":"Ihr neues Passwort muss sich vom vorherigen Passwort unterscheiden",
+    "pageNotFound":"Seite nicht gefunden."
+  }
+}

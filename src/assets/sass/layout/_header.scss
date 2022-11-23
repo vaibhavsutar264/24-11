@@ -1,0 +1,124 @@
+@import '../abstract/variables.scss';
+
+.mode-text,
+.theme-toggle-button,
+.none {
+  display: none;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30px 7% 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  z-index: 99;
+  animation: animHeader 1s linear forwards;
+  animation-delay: 1s;
+  opacity: 0;
+  @keyframes animHeader {
+    0% {
+      opacity: 0;
+      top: -50vh;
+    }
+    100% {
+      opacity: 1;
+      top: 0vh;
+    }
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      display: inline-block;
+      max-width: 150px;
+    }
+    .navbar-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .item {
+        display: inline-block;
+        margin-left: 30px;
+        a {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 14px;
+          color: white;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          text-decoration: none;
+          font-family: 'poppins', sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  background: transparent !important;
+  color: white !important;
+  height: 35px;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+.css-bpeome-MuiSvgIcon-root-MuiSelect-icon,
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  color: white !important;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline,
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+div#demo-select-small {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: capitalize;
+}
+
+@media (max-width: 767px) {
+  header {
+    background: $red;
+    padding-bottom: 20px;
+    position: relative;
+    .container {
+      max-width: 530px;
+      flex-direction: column;
+      .logo {
+        max-width: 100px;
+        margin-bottom: 20px;
+      }
+      .navbar-items {
+        .item {
+          margin-left: 15px;
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .css-lu9khh-MuiSwitch-root,
+    .css-j204z7-MuiFormControlLabel-root {
+      margin-right: 0px;
+    }
+  }
+}
+
+.countryFlag {
+  width: 24px;
+  height: auto;
+  margin-right: 7px;
+}

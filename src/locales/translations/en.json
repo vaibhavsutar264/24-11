@@ -1,0 +1,21 @@
+{
+  "common": {
+    "home": "Home Screen",
+    "cpaasHeading": "CPAAS TCL",
+    "loginHeading": "Login",
+    "enterEmailAndPassword": "Enter email ID & password",
+    "email": "Enter your email ID",
+    "password": "Password",
+    "forgotPassword": "Forgot Password ?",
+    "loginBtn": "Login",
+    "logoutBtn": "Logout",
+    "yourEmailIdPasswordNotMatch": "Entered credential are not correct",
+    "setPassword": "Set Password",
+    "generatePassword": "Generate new password",
+    "confirmPassword": "Confirm Password",
+    "done": "Done",
+    "resetPassword": "Reset Password",
+    "resetPasswordSubTitle":"Your new password must be different from previous password",
+    "pageNotFound":"Page Not Found."
+  }
+}
