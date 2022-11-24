@@ -16,6 +16,16 @@
     "done": "Fertig",
     "resetPassword": "Passwort zurücksetzen",
     "resetPasswordSubTitle":"Ihr neues Passwort muss sich vom vorherigen Passwort unterscheiden",
-    "getLink":"LINK ERHALTEN"
+    "getLink":"LINK ERHALTEN",
+    "pageNotFound":"Seite nicht gefunden.",
+    "chart":"Diagramm",
+    "pieChart":"Kuchendiagramm",
+    "sales":"Verkauf",
+    "voice":"Stimme",
+    "chat":"Plaudern",
+    "video":"Video",
+    "whatsapp":"Whatsapp",
+    "loading":"Wird geladen...",
+    "enterPassword":"Geben Sie Ihr Passwort ein"
   }
 }
