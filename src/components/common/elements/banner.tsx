@@ -7,7 +7,7 @@ const BannerBg = ({ page = 'login' }) => {
       <picture>
         {' '}
         <source srcSet={Background} type={typeVar.IMAGE_WEBP} />{' '}
-        <source srcSet={Background} type="image/png" />{' '}
+        <source srcSet={Background} type={typeVar.IMAGE_PNG} />{' '}
         <img src={Background} className="account__screen__banner" alt="" />{' '}
       </picture>
     )

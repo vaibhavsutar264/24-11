@@ -17,6 +17,15 @@
     "resetPassword": "Reset Password",
     "resetPasswordSubTitle":"Your new password must be different from previous password",
     "getLink":"GET LINK",
-    "pageNotFound":"Page Not Found."
+    "pageNotFound":"Page Not Found.",
+    "chart":"Chart",
+    "pieChart":"Pie Chart",
+    "sales":"Sales",
+    "voice":"Voice",
+    "chat":"Chat",
+    "video":"Video",
+    "whatsapp":"Whatsapp",
+    "loading":"Loading...",
+    "enterPassword":"Enter your password"
   }
 }

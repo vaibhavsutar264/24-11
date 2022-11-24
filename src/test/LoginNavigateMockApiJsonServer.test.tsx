@@ -15,7 +15,6 @@ jest.mock('react-router-dom', () => ({
 describe('Given a Login Page', () => {
   describe("When it's invoked and an user clicks on the 'Login' button and login successfully", () => {
     test('Then it should be redirectioned to the setpassword Page', async () => {
-      //do not use below data as it is actual api data and this test is for fake api just to make all test cases pass i kept this
       const textInput = ['vaibhavsutar264@gmail.com', 'Vaibhav@1234']
 
       //below is the mock jsonserverapi with fake jwt token api

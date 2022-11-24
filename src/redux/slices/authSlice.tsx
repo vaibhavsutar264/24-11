@@ -38,7 +38,6 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isSuccess = true
       state.isError = false
-      // state.user = action.payload.data.token
       state.user = action.payload.token
       state.isAuthenticated = true
       state.message = action.payload.message
@@ -129,7 +128,6 @@ export const forgotPassword = (userEmail: Email) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      // const config = { headers: { 'Content-Type': 'application/json' } }
       const response = await user.forgotPassword(userEmail)
       dispatch(userSlice.actions.forgotPasswordSuccess(response.data))
       return response.data
@@ -150,4 +148,3 @@ export const resetPassword = (token: any, passwordData: Password) => {
     }
   }
 }
-

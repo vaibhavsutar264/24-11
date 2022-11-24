@@ -67,8 +67,8 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   const dispatch = useAppDispatch()
-  const { user,isError, isSuccess, message, isAuthenticated } = useAppSelector(
-    (state: any) => state.auth  || {}
+  const { user, isError, isSuccess, message, isAuthenticated } = useAppSelector(
+    (state: any) => state.auth || {}
   )
   useEffect(() => {
     if (isError) {
@@ -76,15 +76,14 @@ const Login = () => {
     }
     if (isAuthenticated) {
       toast.success('Logged in successful')
-      // dispatch(reset())
     }
-  }, [isError, message, isAuthenticated]) 
+  }, [isError, message, isAuthenticated])
 
   useEffect(() => {
     if (getFromLocalStorage('token') && getFromLocalStorage('token') !== null) {
       navigate('/setpassword')
     }
-  }, [user,navigate])
+  }, [user, navigate])
 
   const formik = useFormik({
     initialValues: {
@@ -178,13 +177,15 @@ const Login = () => {
           <div className="form__inner">
             <Box sx={{ width: 1 }} className="account__form__header">
               <h3 className="title">{t<string>('loginHeading')}</h3>
-              {/* <p className="sub__title">{t<string>('enterEmailAndPassword')}</p> */}
             </Box>
             <Box sx={{ width: 1 }} className="account__form__error">
               <p className="error__msg">
-              {isError && message=="Invalid email and password"?(<p>
-                {t<string>('yourEmailIdPasswordNotMatch')}</p>): message}
-                </p>
+                {isError && message == 'Invalid email and password' ? (
+                  <p>{t<string>('yourEmailIdPasswordNotMatch')}</p>
+                ) : (
+                  message
+                )}
+              </p>
             </Box>
             <Box sx={{ flexGrow: 1 }} className="account__form__body">
               <form onSubmit={handleSubmit} action="#" method="post">

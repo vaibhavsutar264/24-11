@@ -1,8 +1,8 @@
 import React, { FormEvent, useState, useEffect, SyntheticEvent } from 'react'
 import { toast } from 'react-toastify'
-import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { updatePassword } from '../../../redux/slices/authSlice'
 import { Password } from '../../../types/authType'
 import {
@@ -66,29 +66,34 @@ const SetPassword = () => {
   const { t } = useLocales()
   const LoginSchema = Yup.object().shape({
     password: Yup.string().required('Password is required !!').min(8),
-    confirmPassword:Yup.string().required('Password is required !!').min(8).oneOf([Yup.ref('password'), null], 'Password and Confirm Password must match'),
-  });
+    confirmPassword: Yup.string()
+      .required('Password is required !!')
+      .min(8)
+      .oneOf(
+        [Yup.ref('password'), null],
+        'Password and Confirm Password must match'
+      ),
+  })
 
-  
   const defaultValues = {
     password: '',
     confirmPassword: '',
-  };
+  }
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues,
-  });
+  })
 
   const {
     reset,
     setError,
     handleSubmit,
     formState: { errors, isSubmitting },
-    register
-  } = methods;
+    register,
+  } = methods
 
-  const onSubmit = async ( data: any ) => {
+  const onSubmit = async (data: any) => {
     if (password !== confirmPassword) {
       console.log('password and confirm password not same')
       toast.error('password and confirm password not same')
@@ -101,11 +106,9 @@ const SetPassword = () => {
       }
       await dispatch(updatePassword(data))
     } catch (error) {
-      console.error(error);
-      // reset();
+      console.error(error)
     }
-    
-  };
+  }
   const [values, setValues] = React.useState<State>({
     amount: '',
     password: '',
@@ -133,7 +136,6 @@ const SetPassword = () => {
     if (isSuccess) {
       setPassword('')
       setConfirmPassword('')
-      // dispatch(reset())
     }
   }, [isError, isSuccess, message, dispatch])
 
@@ -142,15 +144,15 @@ const SetPassword = () => {
     const tooltipMainBoxElement = document.getElementById(
       'tooltip-main-box'
     ) as HTMLElement
-    tooltipMainBoxElement.style.display="block"
+    tooltipMainBoxElement.style.display = 'block'
     setPassword((e.target as HTMLInputElement).value)
     const patternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
-      const uppercaseVariable = "[A-Z]"
-      const lowercaseVariable = "[a-z]"
-      const symbolVariable = "[^a-zA-Z0-9]"
-      const atleastVariable = ".{8,}"
-      const atleastFifteenVariable = ".{15,}"
+    const uppercaseVariable = '[A-Z]'
+    const lowercaseVariable = '[a-z]'
+    const symbolVariable = '[^a-zA-Z0-9]'
+    const atleastVariable = '.{8,}'
+    const atleastFifteenVariable = '.{15,}'
     const tooltipUppercaseElement = document.getElementById(
       'uppercase'
     ) as HTMLDataListElement
@@ -196,17 +198,17 @@ const SetPassword = () => {
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
-      linearProgressModerateElement.style.display="block"
+      linearProgressModerateElement.style.display = 'block'
     } else {
       tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
-      linearProgressModerateElement.style.display="none"
+      linearProgressModerateElement.style.display = 'none'
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
-      linearProgressModerateElement.style.display="none"
-      linearProgressSuccessElement.style.display="block"
+      linearProgressModerateElement.style.display = 'none'
+      linearProgressSuccessElement.style.display = 'block'
     } else {
-      linearProgressModerateElement.style.display="block"
-      linearProgressSuccessElement.style.display="none"
+      linearProgressModerateElement.style.display = 'block'
+      linearProgressSuccessElement.style.display = 'none'
     }
   }
 
@@ -235,11 +237,11 @@ const SetPassword = () => {
     }
   }
 
-  const tooltipCloseFunction = ()=> {
+  const tooltipCloseFunction = () => {
     const tooltipMainBoxElement = document.getElementById(
       'tooltip-main-box'
     ) as HTMLDataListElement
-    tooltipMainBoxElement.style.display="none"
+    tooltipMainBoxElement.style.display = 'none'
   }
 
   return (
@@ -262,8 +264,8 @@ const SetPassword = () => {
             <p className="sub__title">{t<string>('generatePassword')}</p>
           </Box>
           <Box sx={{ width: 1 }} className="account__form__error">
-              <p className="error__msg">{message && message}</p>
-            </Box>
+            <p className="error__msg">{message && message}</p>
+          </Box>
           <Box sx={{ flexGrow: 1 }} className="account__form__body">
             <form onSubmit={handleSubmit(onSubmit)} action="#" method="post">
               <FormGroup>
@@ -297,9 +299,14 @@ const SetPassword = () => {
                     onInput={handlePasswordChange}
                     {...register('password')}
                   />
-                    {/* Tooltip start */}
-                    <div id="tooltip-main-box" className="tooltipCustom">
-                    <button onClick={tooltipCloseFunction} id="tooltip-close" type="button" className="tooltipClose">
+                  {/* Tooltip start */}
+                  <div id="tooltip-main-box" className="tooltipCustom">
+                    <button
+                      onClick={tooltipCloseFunction}
+                      id="tooltip-close"
+                      type="button"
+                      className="tooltipClose"
+                    >
                       {' '}
                       <CloseIcon />
                     </button>
@@ -324,7 +331,7 @@ const SetPassword = () => {
                           </span>
                           <span className="tooltip-text">A Symbol (@#&)</span>
                         </li>
-                        <li id="atleast"className="tooltipList-item">
+                        <li id="atleast" className="tooltipList-item">
                           <span className="tooltip-icon">
                             <CheckIcon />
                           </span>
@@ -355,7 +362,7 @@ const SetPassword = () => {
                   </div>
                   {/* Tooltip end */}
                 </FormControl>
-                <p className="text-error">{errors.password ?.message}</p>
+                <p className="text-error">{errors.password?.message}</p>
                 <FormControl
                   className="input-wrapper password-checkHide"
                   id="confirm-password-box"
@@ -378,7 +385,6 @@ const SetPassword = () => {
                     sx={{ width: 1 }}
                     type={values.showPassword ? 'text' : 'password'}
                     autoComplete="false"
-                    // name="password"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
                     value={confirmPassword}
                     onInput={handleConfirmPasswordChange}
@@ -403,8 +409,8 @@ const SetPassword = () => {
                       ),
                     }}
                   />
-                  </FormControl>
-                  <p className="text-error">{errors.confirmPassword ?.message}</p>
+                </FormControl>
+                <p className="text-error">{errors.confirmPassword?.message}</p>
                 <FormControl
                   className="input-wrapper submitBtn"
                   sx={{

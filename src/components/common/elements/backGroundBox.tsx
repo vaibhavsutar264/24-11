@@ -8,8 +8,10 @@ import WhatsappImg from '../../../assets/images/svg/Whatsapp.svg'
 import Box from '@mui/material/Box'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { darkTheme, lightTheme } from '../../../themes/globalStyles'
+import useLocales from '../../../hooks/useLocales'
 
 const BackgroundBox = () => {
+  const { t } = useLocales()
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === 'light' ? lightTheme : darkTheme
   return (
@@ -18,25 +20,25 @@ const BackgroundBox = () => {
       <div className="floating-wrapper">
         <div className="floating-wrapper-inner">
           <div className="floating-item floating-item-1">
-            <img src={ChartImg} alt="Chart" />
+            <img src={ChartImg} alt={t<string>('chart')} />
           </div>
           <div className="floating-item floating-item-2">
-            <img src={PieChartImg} alt="Pie Chart" />
+            <img src={PieChartImg} alt={t<string>('pieChart')} />
           </div>
           <div className="floating-item floating-item-3">
-            <img src={SalesImg} alt="Sales" />
+            <img src={SalesImg} alt={t<string>('sales')} />
           </div>
           <div className="floating-item floating-item-4">
-            <img src={VoiceImg} alt="Voice" />
+            <img src={VoiceImg} alt={t<string>('voice')} />
           </div>
           <div className="floating-item floating-item-5">
-            <img src={ChatImg} alt="Chat" />
+            <img src={ChatImg} alt={t<string>('chat')} />
           </div>
           <div className="floating-item floating-item-6">
-            <img src={VideoImg} alt="Video" />
+            <img src={VideoImg} alt={t<string>('video')} />
           </div>
           <div className="floating-item floating-item-7">
-            <img src={WhatsappImg} alt="Whatsapp" />
+            <img src={WhatsappImg} alt={t<string>('whatsapp')} />
           </div>
         </div>
       </div>

@@ -38,10 +38,9 @@ export const slices = {
   AUTH_SLICE: 'auth',
 }
 
-
 export const typeVar = {
-  IMAGE_WEBP: "image/webp",
-  
+  IMAGE_WEBP: 'image/webp',
+  IMAGE_PNG: 'image/png',
 }
 
 export const appRoutes = {

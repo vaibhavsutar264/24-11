@@ -1,9 +1,9 @@
 import React, { FormEvent, useState, useEffect, SyntheticEvent } from 'react'
 import { toast } from 'react-toastify'
-import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
+import * as Yup from 'yup'
+import { useForm } from 'react-hook-form'
 import { resetPassword } from '../../../redux/slices/authSlice'
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Password } from '../../../types/authType'
 import {
   useDispatch as useAppDispatch,
@@ -41,7 +41,7 @@ import WhatsappImg from '../../../assets/images/svg/Whatsapp.svg'
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -76,30 +76,31 @@ const ResetPassword = () => {
   const { t } = useLocales()
   const LoginSchema = Yup.object().shape({
     password: Yup.string().required('Password is required !!').min(8),
-    confirmPassword:Yup.string().required('Password is required !!').min(8).oneOf([Yup.ref('password'), null], 'Passwords must match'),
-  });
+    confirmPassword: Yup.string()
+      .required('Password is required !!')
+      .min(8)
+      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+  })
 
-  
   const defaultValues = {
     password: '',
     confirmPassword: '',
-    // remember: true,
-  };
+  }
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues,
-  });
+  })
 
   const {
     reset,
     setError,
     handleSubmit,
     formState: { errors, isSubmitting },
-    register
-  } = methods;
+    register,
+  } = methods
 
-  const onSubmit = async ( data: any ) => {
+  const onSubmit = async (data: any) => {
     if (password !== confirmPassword) {
       console.log('password and confirm password not same')
       toast.error('password and confirm password not same')
@@ -112,11 +113,10 @@ const ResetPassword = () => {
       }
       await dispatch(resetPassword(token, data))
     } catch (error) {
-      console.error(error);
-      reset();
+      console.error(error)
+      reset()
     }
-    
-  };
+  }
   const [values, setValues] = React.useState<State>({
     amount: '',
     password: '',
@@ -144,7 +144,6 @@ const ResetPassword = () => {
     if (isSuccess) {
       setPassword('')
       setConfirmPassword('')
-      // dispatch(reset())
     }
   }, [isError, isSuccess, message, dispatch])
 
@@ -153,15 +152,15 @@ const ResetPassword = () => {
     const tooltipMainBoxElement = document.getElementById(
       'tooltip-main-box'
     ) as HTMLElement
-    tooltipMainBoxElement.style.display="block"
+    tooltipMainBoxElement.style.display = 'block'
     setPassword((e.target as HTMLInputElement).value)
     const patternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
-      const uppercaseVariable = "[A-Z]"
-      const lowercaseVariable = "[a-z]"
-      const symbolVariable = "[^a-zA-Z0-9]"
-      const atleastVariable = ".{8,}"
-      const atleastFifteenVariable = ".{15,}"
+    const uppercaseVariable = '[A-Z]'
+    const lowercaseVariable = '[a-z]'
+    const symbolVariable = '[^a-zA-Z0-9]'
+    const atleastVariable = '.{8,}'
+    const atleastFifteenVariable = '.{15,}'
     const tooltipUppercaseElement = document.getElementById(
       'uppercase'
     ) as HTMLDataListElement
@@ -188,37 +187,38 @@ const ResetPassword = () => {
     } else {
       passwordBoxElement.className = 'input-wrapper'
     }
+    const tooltipFullfilledRightClickGreen = 'tooltipList-item fulfilled'
+    const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
     if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
-      tooltipUppercaseElement.className = 'tooltipList-item fulfilled'
+      tooltipUppercaseElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipUppercaseElement.className = 'tooltipList-item'
+      tooltipUppercaseElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(lowercaseVariable)) {
-      tooltipLowercaseElement.className = 'tooltipList-item fulfilled'
+      tooltipLowercaseElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipLowercaseElement.className = 'tooltipList-item'
+      tooltipLowercaseElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(symbolVariable)) {
-      tooltipSymbolElement.className = 'tooltipList-item fulfilled'
+      tooltipSymbolElement.className = tooltipFullfilledRightClickGreen
     } else {
-      tooltipSymbolElement.className = 'tooltipList-item'
+      tooltipSymbolElement.className = tooltipUnfullfilledRightClickGray
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
-      tooltipAtleastElement.className = 'tooltipList-item fulfilled'
-      linearProgressModerateElement.style.display="block"
+      tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
+      linearProgressModerateElement.style.display = 'block'
     } else {
-      tooltipAtleastElement.className = 'tooltipList-item'
-      linearProgressModerateElement.style.display="none"
+      tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
+      linearProgressModerateElement.style.display = 'none'
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
-      linearProgressModerateElement.style.display="none"
-      linearProgressSuccessElement.style.display="block"
+      linearProgressModerateElement.style.display = 'none'
+      linearProgressSuccessElement.style.display = 'block'
     } else {
-      linearProgressModerateElement.style.display="block"
-      linearProgressSuccessElement.style.display="none"
+      linearProgressModerateElement.style.display = 'block'
+      linearProgressSuccessElement.style.display = 'none'
     }
   }
-
 
   const handleConfirmPasswordChange = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -245,11 +245,11 @@ const ResetPassword = () => {
     }
   }
 
-  const tooltipCloseFunction = ()=> {
+  const tooltipCloseFunction = () => {
     const tooltipMainBoxElement = document.getElementById(
       'tooltip-main-box'
     ) as HTMLDataListElement
-    tooltipMainBoxElement.style.display="none"
+    tooltipMainBoxElement.style.display = 'none'
   }
 
   return (
@@ -304,66 +304,71 @@ const ResetPassword = () => {
                     onInput={handlePasswordChange}
                     {...register('password')}
                   />
-                  <p className="text-error">{errors.password ?.message}</p>
-                   {/* Tooltip start */}
-                   <div id="tooltip-main-box" className="tooltipCustom">
-                   <button onClick={tooltipCloseFunction} id="tooltip-close" type="button" className="tooltipClose">
-                     {' '}
-                     <CloseIcon />
-                   </button>
-                   <div className="tooltipContent">
-                     <p className="tooltipTitle">Password must have</p>
-                     <ul className="tooltioList">
-                       <li id="uppercase" className="tooltipList-item">
-                         <span className="tooltip-icon">
-                           <CheckIcon />
-                         </span>
-                         <span className="tooltip-text">Upper</span>
-                       </li>
-                       <li id="lowercase" className="tooltipList-item">
-                         <span className="tooltip-icon">
-                           <CheckIcon />
-                         </span>
-                         <span className="tooltip-text">Lower Case</span>
-                       </li>
-                       <li id="symbol" className="tooltipList-item">
-                         <span className="tooltip-icon">
-                           <CheckIcon />
-                         </span>
-                         <span className="tooltip-text">A Symbol (@#&)</span>
-                       </li>
-                       <li id="atleast"className="tooltipList-item">
-                         <span className="tooltip-icon">
-                           <CheckIcon />
-                         </span>
-                         <span className="tooltip-text">
-                           At least 8 characters
-                         </span>
-                       </li>
-                     </ul>
-                     <Box sx={{ width: '100%', mr: 1 }}>
-                       <p className="tooltipTitle StrengthTitle">
-                         Password Strength :{' '}
-                         <span style={{ color: '#ed6c02' }}>Moderate</span>
-                       </p>
-                       <LinearProgress
-                       id="linear-progress-moderate"
-                       variant="determinate"
-                       color="warning"
-                       value={50}
-                     />
-                     <LinearProgress
-                       id="linear-progress-success"
-                       variant="determinate"
-                       color="success"
-                       value={100}
-                     />
-                     </Box>
-                   </div>
-                 </div>
-                 {/* Tooltip end */}
-                </FormControl>
 
+                  {/* Tooltip start */}
+                  <div id="tooltip-main-box" className="tooltipCustom">
+                    <button
+                      onClick={tooltipCloseFunction}
+                      id="tooltip-close"
+                      type="button"
+                      className="tooltipClose"
+                    >
+                      {' '}
+                      <CloseIcon />
+                    </button>
+                    <div className="tooltipContent">
+                      <p className="tooltipTitle">Password must have</p>
+                      <ul className="tooltioList">
+                        <li id="uppercase" className="tooltipList-item">
+                          <span className="tooltip-icon">
+                            <CheckIcon />
+                          </span>
+                          <span className="tooltip-text">Upper</span>
+                        </li>
+                        <li id="lowercase" className="tooltipList-item">
+                          <span className="tooltip-icon">
+                            <CheckIcon />
+                          </span>
+                          <span className="tooltip-text">Lower Case</span>
+                        </li>
+                        <li id="symbol" className="tooltipList-item">
+                          <span className="tooltip-icon">
+                            <CheckIcon />
+                          </span>
+                          <span className="tooltip-text">A Symbol (@#&)</span>
+                        </li>
+                        <li id="atleast" className="tooltipList-item">
+                          <span className="tooltip-icon">
+                            <CheckIcon />
+                          </span>
+                          <span className="tooltip-text">
+                            At least 8 characters
+                          </span>
+                        </li>
+                      </ul>
+                      <Box sx={{ width: '100%', mr: 1 }}>
+                        <p className="tooltipTitle StrengthTitle">
+                          Password Strength :{' '}
+                          <span style={{ color: '#ed6c02' }}>Moderate</span>
+                        </p>
+                        <LinearProgress
+                          id="linear-progress-moderate"
+                          variant="determinate"
+                          color="warning"
+                          value={50}
+                        />
+                        <LinearProgress
+                          id="linear-progress-success"
+                          variant="determinate"
+                          color="success"
+                          value={100}
+                        />
+                      </Box>
+                    </div>
+                  </div>
+                  {/* Tooltip end */}
+                </FormControl>
+                <p className="text-error">{errors.password?.message}</p>
                 <FormControl
                   className="input-wrapper password-checkHide"
                   id="confirm-password-box"
@@ -411,8 +416,8 @@ const ResetPassword = () => {
                       ),
                     }}
                   />
-                  <p className="text-error">{errors.confirmPassword ?.message}</p>
                 </FormControl>
+                <p className="text-error">{errors.confirmPassword?.message}</p>
                 <FormControl
                   className="input-wrapper submitBtn"
                   sx={{

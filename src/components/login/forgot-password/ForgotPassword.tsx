@@ -64,7 +64,6 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     if (isError) {
-      console.log('error in forgot password')
       toast.error(message)
     }
 
