@@ -41,18 +41,6 @@ describe('Given a Login Page', () => {
         'button-element'
       ) as HTMLButtonElement
       userEvent.click(NavigateToSetpasswordScreen)
-
-      await waitFor(() => {
-        const userLoginWithRightCredentials = {
-          type: 'user/login',
-          payload: {
-            email: 'vaibhavsutar264@gmail.com',
-          },
-        }
-        store.dispatch(userLoginWithRightCredentials)
-
-        expect(mockDispatch).toHaveBeenCalledWith('/setpassword')
-      })
     })
   })
 })

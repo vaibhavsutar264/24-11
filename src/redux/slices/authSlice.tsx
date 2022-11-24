@@ -74,7 +74,7 @@ export const { startLoading, hasError } = userSlice.actions
 // -----------------------------------------------------------------
 
 export const login = (userData: UserLogin) => {
-  dispatch(userSlice.actions.startLoading())
+  // dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
       const response = await user.login(userData)

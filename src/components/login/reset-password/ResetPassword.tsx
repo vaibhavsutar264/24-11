@@ -234,14 +234,12 @@ const ResetPassword = () => {
     if (
       (e.target as HTMLInputElement).value.match(confirmPasswordpatternVariable)
     ) {
-      submitButtonElement.className = 'customBtn-01 btn-enable-style'
+      // submitButtonElement.className = 'customBtn-01 btn-enable-style'
       confirmpasswordBoxElement.className =
         'input-wrapper password-checkHide success'
-      setOpen(false)
     } else {
-      submitButtonElement.className = 'customBtn-01'
+      // submitButtonElement.className = 'customBtn-01'
       confirmpasswordBoxElement.className = 'input-wrapper password-checkHide'
-      setOpen(true)
     }
   }
 
@@ -250,6 +248,18 @@ const ResetPassword = () => {
       'tooltip-main-box'
     ) as HTMLDataListElement
     tooltipMainBoxElement.style.display = 'none'
+  }
+
+  if (password !== confirmPassword) {
+    const submitButtonElement = document.getElementById(
+      'btn-enable-style'
+    ) as HTMLButtonElement
+    submitButtonElement.className = 'customBtn-01'
+  } else {
+    const submitButtonElement = document.getElementById(
+      'btn-enable-style'
+    ) as HTMLButtonElement
+    submitButtonElement.className = 'customBtn-01 btn-enable-style'
   }
 
   return (
@@ -418,6 +428,9 @@ const ResetPassword = () => {
                   />
                 </FormControl>
                 <p className="text-error">{errors.confirmPassword?.message}</p>
+                <p className="text-error">
+                  {password !== confirmPassword ? 'Both passwords must matched' : 'confirm password and password matched'}
+                </p>
                 <FormControl
                   className="input-wrapper submitBtn"
                   sx={{
@@ -434,7 +447,6 @@ const ResetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    disabled={open}
                     className="customBtn-01"
                   >
                     {t<string>('done')}

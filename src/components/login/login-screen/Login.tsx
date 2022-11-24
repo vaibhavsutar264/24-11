@@ -130,7 +130,7 @@ const Login = () => {
       passwordBoxElement.className = 'input-wrapper password-checkHide success'
       setOpen(false)
     } else {
-      (e.target as HTMLInputElement).className = 'form-control input-custom'
+      ;(e.target as HTMLInputElement).className = 'form-control input-custom'
       submitButtonElement.className = 'customBtn-01'
       passwordBoxElement.className = 'input-wrapper password-checkHide'
       setOpen(true)
@@ -225,7 +225,15 @@ const Login = () => {
                       value={email}
                     />
                   </FormControl>
-                  {touched.email && errors.email && <p>{errors.email}</p>}
+                  {touched.email && errors.email && (
+                    <p>
+                      {errors.email == 'Enter your email' ? (
+                        <p className="text-error">{t<string>('email')}</p>
+                      ) : (
+                        <p className="text-error">{errors.email}</p>
+                      )}
+                    </p>
+                  )}
 
                   <FormControl
                     className="input-wrapper password-checkHide"
