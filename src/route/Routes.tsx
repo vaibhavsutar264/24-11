@@ -33,20 +33,20 @@ function Routes() {
         },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
         { path: appRoutes.DASHBOARD, element: <Dashboard /> },
-        // {
-        //   path: appRoutes.SET_PASSWORD,
-        //   element: <SetPassword />,
-        // },
+        {
+          path: appRoutes.SET_PASSWORD,
+          element: <SetPassword />,
+        },
       ],
     },
     {
       path: '',
       element: <PrivateRoutes />,
       children: [
-        {
-          path: appRoutes.SET_PASSWORD,
-          element: <SetPassword />,
-        },
+        // {
+        //   path: appRoutes.SET_PASSWORD,
+        //   element: <SetPassword />,
+        // },
       ],
     },
     {

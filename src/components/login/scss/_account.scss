@@ -9,6 +9,9 @@
 #linear-progress-success{
   display: none;
 }
+#match-both-password-error{
+  display: none;
+}
 
 .floating-wrapper {
   width: 100%;
@@ -826,6 +829,12 @@
 p.text-error {
   margin: 0px 0px 20px;
   color: #D63548;
+  font-size: 14px;
+  line-height: 14px;
+}
+p.text-error-success {
+  margin: 0px 0px 20px;
+  color: #39be12;
   font-size: 14px;
   line-height: 14px;
 }

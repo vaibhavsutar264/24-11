@@ -217,23 +217,30 @@ const SetPassword = () => {
     setConfirmPassword((e.target as HTMLInputElement).value)
     const confirmPasswordpatternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
+      const atleastVariable = '.{3,}'
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
     const confirmpasswordBoxElement = document.getElementById(
       'confirm-password-box'
-    ) as HTMLButtonElement
+    ) as HTMLElement
+    const matchBothPasswordElement = document.getElementById(
+      'match-both-password-error'
+    ) as HTMLParagraphElement
     if (
       (e.target as HTMLInputElement).value.match(confirmPasswordpatternVariable)
     ) {
-      submitButtonElement.className = 'customBtn-01 btn-enable-style'
       confirmpasswordBoxElement.className =
         'input-wrapper password-checkHide success'
-      setOpen(false)
     } else {
-      submitButtonElement.className = 'customBtn-01'
       confirmpasswordBoxElement.className = 'input-wrapper password-checkHide'
-      setOpen(true)
+    }
+    if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
+      matchBothPasswordElement.style.display = 'block'
+      // matchBothPasswordElement.style.color = 'green'
+
+    } else {
+      matchBothPasswordElement.style.display = 'none'
     }
   }
 
@@ -411,6 +418,9 @@ const SetPassword = () => {
                   />
                 </FormControl>
                 <p className="text-error">{errors.confirmPassword?.message}</p>
+                <p id="match-both-password-error" className={(password !== confirmPassword)?"text-error":"text-error-success"}>
+                  {password !== confirmPassword ? 'Both passwords must matched' : 'password and confirm password matched'}
+                </p>
                 <FormControl
                   className="input-wrapper submitBtn"
                   sx={{
@@ -427,8 +437,7 @@ const SetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    disabled={open}
-                    className="customBtn-01"
+                    className={(password.length> 0 && confirmPassword.length>0)?((password !== confirmPassword)?"customBtn-01":"customBtn-01 btn-enable-style"):"customBtn-01"}
                   >
                     {t<string>('done')}
                   </ColorButton>
