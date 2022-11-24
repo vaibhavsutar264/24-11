@@ -250,17 +250,15 @@ const ResetPassword = () => {
     tooltipMainBoxElement.style.display = 'none'
   }
 
-  if (password !== confirmPassword) {
-    const submitButtonElement = document.getElementById(
-      'btn-enable-style'
-    ) as HTMLButtonElement
-    submitButtonElement.className = 'customBtn-01'
-  } else {
-    const submitButtonElement = document.getElementById(
-      'btn-enable-style'
-    ) as HTMLButtonElement
-    submitButtonElement.className = 'customBtn-01 btn-enable-style'
-  }
+  // const submitButtonElement = document.getElementById(
+  //   'btn-enable-style'
+  // ) as HTMLButtonElement
+  // if (password == confirmPassword) {
+  //   submitButtonElement.className = 'customBtn-01 btn-enable-style'
+  // } else {
+  //   // submitButtonElement.className = 'customBtn-01'
+  // }
+
 
   return (
     <Box className="account__screen">
@@ -447,7 +445,7 @@ const ResetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    className="customBtn-01"
+                    className={(password !== confirmPassword)?"customBtn-01":"customBtn-01 btn-enable-style"}
                   >
                     {t<string>('done')}
                   </ColorButton>
